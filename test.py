@@ -1,12 +1,16 @@
 from quickstart import get_creds, get_service
 from pprint import pprint
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 creds = get_creds()
 
 
 service  = get_service(creds)
 
-file_id  = input("File id?: ")
+file_id  = os.getenv("TEST_FILE_ID")
 
 
 file = service.files().get(fileId=file_id).execute()
